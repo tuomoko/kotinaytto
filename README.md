@@ -40,6 +40,8 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
+NOTE: Use `export PUBLIC_URL=http://public.url.here/` before executing the npm run build if you use relative paths in the deployment.
+
 ### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can't go back!**
