@@ -3,11 +3,23 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
+import { SettingsProvider } from './SettingsContext';
+
+const client = new ApolloClient({
+  uri: 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql',
+  cache: new InMemoryCache(),
+  connectToDevTools: true
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <SettingsProvider>
+        <App />
+      </SettingsProvider>
+    </ApolloProvider>
   </React.StrictMode>
 );
 

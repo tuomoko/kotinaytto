@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# Kotinäyttö 
+## Configuration
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The configuration of the page is done using config.json file. Example file is available under the src folder. Please rename the example to config.json to run the app. The example configuration file contains stop IDs for Rautatieasema tram stop, both directions, and the bike station IDs for both Rautatientori bike rental stations.
+
+The config file contains the following details:
+- STOPS: Array of IDs for bus/tram/train/ferry stops
+- BIKE_STATIONS: Array of IDs for bike stations
+
+You may use the details from here to figure out the IDs: https://digitransit.fi/en/developers/apis/1-routing-api/
+E.g. the following queries
+STOPS: https://api.digitransit.fi/graphiql/hsl?query=%7B%0A%20%20stops(name%3A%20%22hertton%22)%20%7B%0A%20%20%20%20gtfsId%0A%20%20%20%20name%0A%20%20%20%20code%0A%20%20%20%20lat%0A%20%20%20%20lon%0A%20%20%7D%0A%7D
+BIKE_STATIONS: https://api.digitransit.fi/graphiql/hsl?query=%7B%0A%20%20bikeRentalStations%20%7B%0A%20%20%20%20name%0A%20%20%20%20stationId%0A%20%20%7D%0A%7D
+
 
 ## Available Scripts
 
