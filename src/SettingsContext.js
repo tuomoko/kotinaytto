@@ -12,7 +12,7 @@ export const SettingsProvider = ({
     return (
       <SettingsContext.Provider
         value={{
-          stops: configData.STOPS, bikeRentalStations: configData.BIKE_STATIONS
+          stops: configData.STOPS, bikeRentalStations: configData.BIKE_STATIONS, electricityConfig: configData.ELECTRICITY
         }}
       >
         {children}
