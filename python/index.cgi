@@ -17,6 +17,7 @@ import config
 # cgitb.enable()
 
 print("Content-Type: application/json")
+print("Access-Control-Allow-Origin: http://localhost:3000")
 print("")
 
 # These are the GET arguments
