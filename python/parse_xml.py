@@ -1,7 +1,6 @@
 import urllib.request
 import xml.etree.ElementTree as ET
 import re
-import json
 
 def parse_xml(url):
     with urllib.request.urlopen(url) as response:
@@ -15,7 +14,6 @@ def parse_xml(url):
 
     series = list()
     for el in root.findall(f"{ns}TimeSeries"):
-        print('-------------------')
         period = el.find(f"{ns}Period")
         timeInterval = period.find(f"{ns}timeInterval")
         start = timeInterval.find(f"{ns}start").text
@@ -26,7 +24,5 @@ def parse_xml(url):
             price = point.find(f"{ns}price.amount").text
             points.append({"Position": position, "Price": price})
         series.append({"Start": start, "End": end, "Points": points})
-    #    for ch in period.getchildren():
-    #        print('{:>15}: {:<30}'.format(ch.tag, ch.text))
 
     return series
