@@ -1,11 +1,18 @@
-{
-    /*
-        Here you may configure the ID for bus/tram/train/ferry stops and the ID for bike stations
-        You may use the details from here to figure out the IDs: https://digitransit.fi/en/developers/apis/1-routing-api/
-        E.g. the following queries
-        STOPS: https://api.digitransit.fi/graphiql/hsl?query=%7B%0A%20%20stops(name%3A%20%22hertton%22)%20%7B%0A%20%20%20%20gtfsId%0A%20%20%20%20name%0A%20%20%20%20code%0A%20%20%20%20lat%0A%20%20%20%20lon%0A%20%20%7D%0A%7D
-        BIKE_STATIONS: https://api.digitransit.fi/graphiql/hsl?query=%7B%0A%20%20bikeRentalStations%20%7B%0A%20%20%20%20name%0A%20%20%20%20stationId%0A%20%20%7D%0A%7D
-    */
-    "STOPS": ["HSL:1020124","HSL:1020140"], // Kaivokatu tram stops for both directions
-    "BIKE_STATIONS": ["019", "022"] // Rautatientori both bike rental stations
+  {
+  "STOPS": [
+    "HSL:1020124",
+    "HSL:1020140"
+  ],
+  "BIKE_STATIONS": [
+    019
+  ],
+  "ELECTRICITY": {
+    "API_URL": "https://pythonapi",
+    "TASKS": [
+      {"NAME": "Sauna", "ENERGY": 10},
+      {"NAME": "Pyykinpesu", "ENERGY": 2}
+    ],
+    "TRANSFER_PRICE": 4.07,
+    "SPOT_MARGIN": 0.38
   }
+}
