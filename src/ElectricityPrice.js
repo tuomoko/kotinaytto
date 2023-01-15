@@ -11,11 +11,11 @@ function ElectricityPrice()
     const getData=()=>{
       fetch(electricityConfig.API_URL)
         .then(function(response){
-          console.log(response)
+          //console.log(response)
           return response.json();
         })
         .then(function(myJson) {
-          console.log(myJson);
+          //console.log(myJson);
           setData(myJson)
         });
     }
