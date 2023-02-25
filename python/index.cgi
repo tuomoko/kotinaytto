@@ -67,7 +67,7 @@ end_time = start_time + datetime.timedelta(hours=hours)
 periodEnd = end_time.strftime("%Y%m%d%H00")
 
 # Get the data
-url = "https://transparency.entsoe.eu/api?documentType=A44&in_Domain={}&out_Domain={}&periodStart={}&periodEnd={}&securityToken={}".format(area.code, area.code, periodStart, periodEnd, config.SECURITY_TOKEN)
+url = "https://web-api.tp.entsoe.eu/api?documentType=A44&in_Domain={}&out_Domain={}&periodStart={}&periodEnd={}&securityToken={}".format(area.code, area.code, periodStart, periodEnd, config.SECURITY_TOKEN)
 series = parse_xml.parse_xml(url)
 
 # Find the requested start time and select the correct amount of hours after that
