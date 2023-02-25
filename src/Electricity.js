@@ -46,9 +46,8 @@ function Electricity() {
     return (
 
       <div>
-          <p>Sähkön hinta nyt 
-          <OverlayTrigger trigger="focus" placement="bottom" overlay={popover}>
-              <a tabindex="0" role="button" class="link-primary"> {getPrice(prices[0])} c/kWh.</a>
+          <p>Sähkön hinta nyt <OverlayTrigger trigger="focus" placement="bottom" overlay={popover}>
+              <a tabindex="0" role="button" class="link-primary">{getPrice(prices[0])} c/kWh.</a>
           </OverlayTrigger></p>
             
       {tasks.length > 0 ? tasks : ""}
