@@ -12,7 +12,15 @@
       {"NAME": "Sauna", "ENERGY": 10},
       {"NAME": "Pyykinpesu", "ENERGY": 2}
     ],
-    "TRANSFER_PRICE": 4.07,
+    "TRANSFER_PRICE": 5.51,
+    "SPOT_TAX": 0.10,
+    "ELECTRICITY_TAX": 2.79372,
     "SPOT_MARGIN": 0.38
+  },
+  "WEATHER": {
+    "API_KEY": "abc",
+    "LAT": "60.17177984148732",
+    "LON": "24.941362408447016",
+    "LOCATION_LABEL": "Helsinki"
   }
 }
