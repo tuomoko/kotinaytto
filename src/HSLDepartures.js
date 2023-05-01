@@ -64,7 +64,12 @@ function DisplayDepartures() {
 
     const list = data.stops.reduce(
         (acc, stop) =>
-        acc.concat(stop.stoptimesForPatterns.reduce(flattenDepartures, [])),
+        {
+          if (stop)
+            return acc.concat(stop.stoptimesForPatterns.reduce(flattenDepartures, []));
+          else
+            return acc;
+        },
         []
     )
     list.sort((a, b) => a.time - b.time)

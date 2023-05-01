@@ -3,12 +3,27 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ApolloClient, InMemoryCache, ApolloProvider} from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, ApolloLink} from '@apollo/client';
 import { SettingsProvider } from './SettingsContext';
+import configData from "./config.json";
+
+const httpLink = new HttpLink({ uri: 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql' });
+
+const authMiddleware = new ApolloLink((operation, forward) => {
+  // add the authorization to the headers
+  operation.setContext(({ headers = {} }) => ({
+    headers: {
+      ...headers,
+      "digitransit-subscription-key": configData.DIGITRANSIT_API_KEY || null,
+    }
+  }));
+
+  return forward(operation);
+})
 
 const client = new ApolloClient({
-  uri: 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql',
   cache: new InMemoryCache(),
+  link: authMiddleware.concat(httpLink),
   connectToDevTools: true
 });
 
