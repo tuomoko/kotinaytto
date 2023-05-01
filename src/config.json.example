@@ -6,14 +6,17 @@
   "BIKE_STATIONS": [
     019
   ],
+  "DIGITRANSIT_API_KEY": "",
   "ELECTRICITY": {
     "API_URL": "https://pythonapi",
     "TASKS": [
       {"NAME": "Sauna", "ENERGY": 10},
       {"NAME": "Pyykinpesu", "ENERGY": 2}
     ],
+    "TRANSFER_PRICE": 4.07,
+    "SPOT_MARGIN": 0.38,
     "TRANSFER_PRICE": 5.51,
-    "SPOT_TAX": 0.10,
+    "SPOT_TAX": 0.24,
     "ELECTRICITY_TAX": 2.79372,
     "SPOT_MARGIN": 0.38
   },
