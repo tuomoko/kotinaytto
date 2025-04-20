@@ -5,7 +5,6 @@ import { useSettings } from './SettingsContext';
 import { Table } from 'react-bootstrap'
 import Popover from 'react-bootstrap/Popover';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Button from 'react-bootstrap/Button';
 import moment from 'moment'
 
 function Electricity() {

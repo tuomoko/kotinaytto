@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import DisplayDepartures from './HSLDepartures';
 import DisplayBikes from './HSLBikes';
 import Electricity from './Electricity';
+import Button from 'react-bootstrap/Button';
 
 function App() {
   const [refreshKey, setRefreshKey] = useState(0);
@@ -14,9 +15,9 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={handleRefresh} style={{ margin: '10px', padding: '10px' }}>
+      <Button onClick={handleRefresh} style={{ margin: '10px', padding: '10px' }}>
         Päivitä
-      </button>
+      </Button>
       <Accordion defaultActiveKey="0">
         <Accordion.Item eventKey="0">
           <Accordion.Header>Bussit ja Sporat</Accordion.Header>
