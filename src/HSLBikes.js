@@ -1,23 +1,36 @@
 import { useQuery, gql } from '@apollo/client';
 import { useSettings } from './SettingsContext';
+import React from 'react';
 
 const GET_BIKES = gql`
 query GetBikes($ids: [String]!) {
-  bikeRentalStations(ids: $ids) {
+  vehicleRentalStations(ids: $ids) {
     stationId
     name
-    bikesAvailable
-    spacesAvailable
+    availableVehicles {
+      byType {
+        count
+        vehicleType {
+          formFactor
+        }
+      }
+    }
     lat
     lon
     allowDropoff
+    capacity
     }
   }
 `
 
-function DisplayBikes() {
+function DisplayBikes({ key: refreshKey }) {
     const {bikeRentalStations} = useSettings();
-    const { loading, error, data } = useQuery(GET_BIKES, {variables: {ids: bikeRentalStations}});
+    const { loading, error, data, refetch } = useQuery(GET_BIKES, {variables: {ids: bikeRentalStations}});
+    // Refetch data when refreshKey changes
+    React.useEffect(() => {
+      refetch();
+  }, [refreshKey, refetch]);
+    
     if (loading) return <p>Loading...</p>;
     if (error) {
         //console.log(error);
@@ -25,12 +38,21 @@ function DisplayBikes() {
     }
     if (!data) return null;
 
-    return data.bikeRentalStations.map(({ stationId, name, bikesAvailable, spacesAvailable }) => (
-    <div key={stationId}>
-        <p><b>{name}</b></p>
-        <p>{bikesAvailable}/{bikesAvailable+spacesAvailable} pyörää saatavilla</p>
-    </div>
-    ));
+    return data.vehicleRentalStations.map(({ stationId, name, availableVehicles, capacity }) => {
+      // Filter available vehicles by formFactor (e.g., only "BICYCLE")
+      const availableBicycles = availableVehicles.byType.filter(
+          ({ vehicleType }) => vehicleType.formFactor === "BICYCLE"
+      );
+
+      const bikesAvailable = availableBicycles.reduce((sum, { count }) => sum + count, 0);
+
+      return (
+          <div key={stationId}>
+              <p><b>{name}</b></p>
+              <p>{bikesAvailable}/{capacity} pyörää saatavilla</p>
+          </div>
+      );
+  });
   }
 
 export default DisplayBikes;

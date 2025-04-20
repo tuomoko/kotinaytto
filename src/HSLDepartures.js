@@ -3,6 +3,7 @@ import { useSettings } from './SettingsContext';
 import { Table } from 'react-bootstrap'
 import moment from 'moment'
 import { FaRss } from 'react-icons/fa';
+import React from 'react';
 
 
 
@@ -41,10 +42,15 @@ query GetStops($ids: [String]!, $nstoptimes: Int!) {
   }
 `
 
-function DisplayDepartures() {
+function DisplayDepartures({ key: refreshKey }) {
     const formatTime = tstamp => moment.unix(tstamp).format('HH:mm')
     const {stops} = useSettings();
-    const { loading, error, data } = useQuery(GET_STOPS, {variables: {ids: stops, nstoptimes: 2}});
+    const { loading, error, data, refetch } = useQuery(GET_STOPS, {variables: {ids: stops, nstoptimes: 2}});
+    // Refetch data when refreshKey changes
+        React.useEffect(() => {
+          refetch();
+      }, [refreshKey, refetch]);
+    
     if (loading) return <p>Loading...</p>;
     if (error) return <p>Error :(</p>;
 

@@ -7,7 +7,7 @@ import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, ApolloLink} from
 import { SettingsProvider } from './SettingsContext';
 import configData from "./config.json";
 
-const httpLink = new HttpLink({ uri: 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql' });
+const httpLink = new HttpLink({ uri: 'https://api.digitransit.fi/routing/v2/hsl/gtfs/v1' });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   // add the authorization to the headers
